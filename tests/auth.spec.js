@@ -1,26 +1,45 @@
 import { expect } from 'chai';
 import supertest from 'supertest';
 
-describe('auth', function() {
-    const request = supertest(process.env.BASE_URL);
+describe( 'auth', function() {
+    let result;
 
-    it('successful log in', function() {
-        request
-            .post('/auth')
-            .send({login: process.env.LOGIN, password: process.env.PASSWORD })
-            .end(function(err, res) {
-                expect(res.statusCode).to.eq(200);
-                expect(res.body.token).not.to.be.undefined;
+    describe('Successful log in', function () {
+        before(function() {
+            result = supertest(process.env.BASE_URL)
+                .post('/auth')
+                .send({login: process.env.LOGIN, password: process.env.PASSWORD });
+
+        });
+    
+    it('Response status code is 200', function() {
+        result.expect(200);
+
             });
+    
+    it('Response body contains authorization token', function() {
+        result.end(function (err, res) {
+            expect(res.body.token).not.to.be.undefined;
+        });
     });
+        });
 
-    it('log in with wrong credentials should return error', function() {
-        request
-            .post('/auth')
-            .send({ login:'wrong', password: 'wrong'})
-            .end(function(err, res) {
-                expect(res.statusCode).to.eq(404);
-                expect(res.body.message).to.eq('Wrong login or password.');
+     describe('Log in witg wrong credentials should return error', function() {
+         before( function() {
+             result = supertest(process.env.BASE_URL)
+                 .post('/auth')
+                 .send({ login: 'wrong', password: 'wrong' });
+         });
+
+       it('Response status code 404', function() {
+           result.expect(404);
+       });
+
+       it('Response body contains error message', function() {
+           result.end(function (err, res) {
+               expect(res.body.message).to.eq('Wrong login or password.');
+           });
+
             });
     });
 });
