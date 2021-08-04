@@ -1,0 +1,33 @@
+{
+    "auth": {
+        "valid": {
+            "token": "8b59eb5d-398d-4fd2-a668-4dca7aecd942"
+        },
+        "invalid": {
+           "message": "Wrong login or password."
+        }
+    },
+    "users": {
+        "create": {
+            "id": "b964eb3b-f0a9-4822-a06c-69f01b6dbc20",
+            "amount": 1000
+        },
+        "getAll": [
+            {
+                "id": "b964eb3b-f0a9-4826-a06c-69f01b6dbc20",
+                "amount": 1000
+            },
+            {
+                "id": "b964eb3b-f0a9-4852-a06c-69f01b6dbc20",
+                "amount": 1000
+            },
+            {
+                "id": "b964eb3b-f0a9-4892-a06c-69f01b6dbc20",
+                "amount": 1000
+            }
+        ],
+        "delete": {
+            "message": "User deleted."
+        }
+    }
+}
