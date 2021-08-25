@@ -22,7 +22,7 @@ describe( 'auth', function() {
         });
 
         it('Response status code is 200', function() {
-            expect(authHelper.response.statusCode).to.eq(200);
+            expect(authHelper.response.statusCode, JSON.stringify(authHelper.response)).to.eq(200);
         });
     
         it('Response body contains authorization token', function() {
