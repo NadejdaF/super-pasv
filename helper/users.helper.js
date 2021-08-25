@@ -9,9 +9,7 @@ class UsersHelper {
         await supertest(process.env.BASE_URL)
             .post('/users')
             .set('Authorization', process.env.TOKEN)
-            .then((res) => {
-                this.response = res
-            });
+            .then((res) => { this.response = res });
         return this.response;
     }
 
@@ -19,9 +17,7 @@ class UsersHelper {
         await supertest(process.env.BASE_URL)
             .get(`/users?id=${id}`)
             .set('Authorization', process.env.TOKEN)
-            .then((res) => {
-                this.response = res
-            });
+            .then((res) => { this.response = res });
         return this.response;
     }
 
@@ -29,9 +25,7 @@ class UsersHelper {
         await supertest(process.env.BASE_URL)
             .get('/users')
             .set('Authorization', process.env.TOKEN)
-            .then((res) => {
-                this.response = res
-            });
+            .then((res) => { this.response = res });
         return this.response;
     }
 
@@ -40,9 +34,7 @@ class UsersHelper {
             .delete('/users')
             .send({id: id})
             .set('Authorization', process.env.TOKEN)
-            .then((res) => {
-                this.response = res
-            });
+            .then((res) => { this.response = res });
         return this.response;
 
     }
